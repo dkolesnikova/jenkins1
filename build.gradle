@@ -7,6 +7,11 @@ repositories {
     mavenCentral()
 }
 
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 allure {
     report {
         version.set("2.19.0")
@@ -21,9 +26,6 @@ allure {
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 
 dependencies {
     testImplementation (
@@ -38,6 +40,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
@@ -53,7 +56,16 @@ task smoke_tests(type: Test) {
         includeTags("smoke")
     }
 }
-
+task one_property_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("one_property")
+    }
+}
+task hello_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello")
+    }
+}
 help {
     doFirst {
         println ""

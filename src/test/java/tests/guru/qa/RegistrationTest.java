@@ -1,5 +1,6 @@
 package tests.guru.qa;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -12,6 +13,7 @@ import static io.qameta.allure.Allure.step;
 public class RegistrationTest extends TestBase {
 
     @Test
+    @Tag("form_test")
     void successfulRegistrationTest() {
         step("Open registrations form", () -> {
             open("https://demoqa.com/automation-practice-form");
