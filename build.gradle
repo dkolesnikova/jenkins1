@@ -66,16 +66,21 @@ task hello_test(type: Test) {
         includeTags("hello")
     }
 }
-help {
-    doFirst {
-        println ""
-        println "************************************************************************ "
-        println "***                                                                  *** "
-        println "*** Welcome to https://github.com/qa-guru/demoqa-test-16!            *** "
-        println "***                                                                  *** "
-        println "*** ./gradlew help                                                   *** "
-        println "***                                                                  *** "
-        println "************************************************************************ "
-        println ""
+    task form_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("form_test")
+        }
     }
-}
+    help {
+        doFirst {
+            println ""
+            println "************************************************************************ "
+            println "***                                                                  *** "
+            println "*** Welcome to https://github.com/qa-guru/demoqa-test-16!            *** "
+            println "***                                                                  *** "
+            println "*** ./gradlew help                                                   *** "
+            println "***                                                                  *** "
+            println "************************************************************************ "
+            println ""
+        }
+    }
