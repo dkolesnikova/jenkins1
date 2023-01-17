@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.10.0'
 }
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -34,9 +36,19 @@ dependencies {
             "io.qameta.allure:allure-selenide:2.19.0",
             "org.junit.jupiter:junit-jupiter:5.9.1",
             "org.slf4j:slf4j-simple:1.7.32",
-            "org.aspectj:aspectjweaver:1.9.9.1"
+            "org.aspectj:aspectjweaver:1.9.9.1",
+            'org.seleniumhq.selenium:selenium-java:3.141.59',
+            'io.github.bonigarcia:webdrivermanager:5.2.1',
+            'org.aeonbits.owner:owner:1.0.4',
+            'org.assertj:assertj-core:3.23.1'
     )
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
+}
+
+test {
+    useJUnitPlatform()
+    //-PbaseUrl=https://github.com -Pbrowser=FIREFOX
+    systemProperties(System.getProperties())
 }
 
 tasks.withType(Test) {
